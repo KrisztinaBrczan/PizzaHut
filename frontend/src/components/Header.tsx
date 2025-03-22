@@ -37,8 +37,8 @@ export default function Header() {
             position: 'absolute',
             top: 0,
             left: -5,
-            width: 100,
-            height: 100,
+            width: !isMobileScreen ? 100 : 80,
+            height: !isMobileScreen ? 100 : 80,
             borderRadius: '50%',
             display: 'flex',
             justifyContent: 'center',
@@ -49,7 +49,7 @@ export default function Header() {
         >
           <Tooltip title="Admin" placement="left" arrow>
             <IconButton sx={{ cursor: 'pointer', zIndex: 2 }}>
-              <LocalPizzaTwoToneIcon sx={{ fontSize: 80, rotate: '-20deg', color: 'secondary.main' }} />
+              <LocalPizzaTwoToneIcon sx={{ fontSize: !isMobileScreen ? 80 : 60, rotate: '-20deg', color: 'secondary.main' }} />
             </IconButton>
           </Tooltip>
         </Box>
