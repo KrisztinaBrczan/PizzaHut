@@ -1,7 +1,8 @@
 'use client';
 
-import { AppBar, Box, Tab, Tabs, Toolbar } from '@mui/material';
+import { AppBar, Box, IconButton, Tab, Tabs, Toolbar } from '@mui/material';
 import { SyntheticEvent, useState } from 'react';
+import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 
 export default function Header() {
   const [value, setValue] = useState<number>(1);
@@ -13,8 +14,28 @@ export default function Header() {
   return (
     <>
       <AppBar position="static">
-        <Toolbar>
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: -5,
+            width: 100,
+            height: 100,
+            borderRadius: '50%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            bgcolor: 'primary.main',
+            cursor: 'pointer',
+          }}
+        >
+          <IconButton sx={{ cursor: 'pointer', zIndex: 2 }}>
+            <LocalPizzaTwoToneIcon sx={{ fontSize: 80, rotate: '-20deg', color: 'secondary.main' }} />
+          </IconButton>
+        </Box>
+
+        <Toolbar sx={{ position: 'relative', justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Tabs
               value={value}
               onChange={handleChange}
