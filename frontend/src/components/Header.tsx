@@ -6,8 +6,8 @@ import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 
 export default function Header() {
-  const [value, setValue] = useState<number>(1);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [value, setValue] = useState(1);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
 
