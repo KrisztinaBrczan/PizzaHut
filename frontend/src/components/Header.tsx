@@ -64,9 +64,9 @@ export default function Header() {
                 indicatorColor="secondary"
                 aria-label="secondary tabs example"
               >
-                <Tab value={1} sx={{ fontWeight: 'bold' }} label="Pizzas" />
-                <Tab value={2} sx={{ fontWeight: 'bold' }} label="Soft drinks" />
-                <Tab value={3} sx={{ fontWeight: 'bold' }} label="Custom pizza" />
+                <Tab value={'pizzas'} sx={{ fontWeight: 'bold' }} label="Pizzas" />
+                <Tab value={'softDrinks'} sx={{ fontWeight: 'bold' }} label="Soft drinks" />
+                <Tab value={'customPizza'} sx={{ fontWeight: 'bold' }} label="Custom pizza" />
               </Tabs>
             </Box>
           ) : (
