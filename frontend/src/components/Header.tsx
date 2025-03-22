@@ -8,7 +8,7 @@ import { MenuItemType } from '@/Types';
 
 export default function Header() {
   const [value, setValue] = useState('pizzas');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
 
@@ -19,12 +19,12 @@ export default function Header() {
   };
 
   function onMobileMenuClick(event: MouseEvent<HTMLButtonElement>) {
-    setMobileMenuOpen(true);
+    setIsMobileMenuOpen(true);
     setAnchorEl(event?.currentTarget);
   }
 
   function onMobileMenuClose() {
-    setMobileMenuOpen(false);
+    setIsMobileMenuOpen(false);
     setAnchorEl(null);
     //routing
   }
@@ -76,7 +76,7 @@ export default function Header() {
                 <MenuTwoToneIcon sx={{ fontSize: 40, color: 'secondary.main' }} />
               </IconButton>
 
-              <Menu id="basic-menu" anchorEl={anchorEl} open={mobileMenuOpen} onClose={onMobileMenuClose}>
+              <Menu id="basic-menu" anchorEl={anchorEl} open={isMobileMenuOpen} onClose={onMobileMenuClose}>
                 {menuItems.map(({ value, menuItemText }) => (
                   <MenuItem value={value} onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
                     {menuItemText}
