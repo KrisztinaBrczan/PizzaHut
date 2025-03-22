@@ -14,7 +14,7 @@ export default function Header() {
 
   const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const handleChange = (event: SyntheticEvent, newValue: number) => {
+  const handleChange = (event: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
