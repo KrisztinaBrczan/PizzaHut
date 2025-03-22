@@ -76,13 +76,13 @@ export default function Header() {
               </IconButton>
 
               <Menu id="basic-menu" anchorEl={anchorEl} open={mobileMenuOpen} onClose={onMobileMenuClose}>
-                <MenuItem value="pizzas" onClick={onMobileMenuClose}>
+                <MenuItem value="pizzas" onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
                   Pizzas
                 </MenuItem>
-                <MenuItem value="softDrinks" onClick={onMobileMenuClose}>
+                <MenuItem value="softDrinks" onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
                   Soft drinks
                 </MenuItem>
-                <MenuItem value="customPizza" onClick={onMobileMenuClose}>
+                <MenuItem value="customPizza" onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
                   Custom pizza
                 </MenuItem>
               </Menu>
