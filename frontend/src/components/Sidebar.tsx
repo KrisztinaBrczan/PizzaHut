@@ -26,9 +26,9 @@ export default function Sidebar() {
     },
   ];
 
-  const { isDrawerOpen, toggelDrawer } = useSidebarStore();
+  const { isDrawerOpen, toggleDrawer } = useSidebarStore();
   return (
-    <Drawer anchor="left" open={isDrawerOpen} onClose={toggelDrawer} sx={{ zIndex: -1 }}>
+    <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer} sx={{ zIndex: -1 }}>
       <List sx={{ marginTop: '60%', width: 200 }}>
         <ListItemButton sx={{ '&:hover': { color: 'primary.main' } }}>
           <ListItemText primary="Orders" />

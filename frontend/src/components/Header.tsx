@@ -28,7 +28,7 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
 
-  const { toggelDrawer } = useSidebarStore();
+  const { toggleDrawer } = useSidebarStore();
 
   const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -66,7 +66,7 @@ export default function Header() {
           }}
         >
           <Tooltip title="Admin" placement="left" arrow>
-            <IconButton onClick={toggelDrawer} sx={{ cursor: 'pointer', zIndex: 2 }}>
+            <IconButton onClick={toggleDrawer} sx={{ cursor: 'pointer', zIndex: 2 }}>
               <LocalPizzaTwoToneIcon sx={{ fontSize: !isMobileScreen ? 80 : 60, rotate: '-20deg', color: 'secondary.main' }} />
             </IconButton>
           </Tooltip>
