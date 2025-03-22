@@ -54,36 +54,6 @@ export default function Sidebar() {
             </Collapse>
           </Box>
         ))}
-
-        {/* <ListItemButton onClick={onPizzaListItemClick}>
-          <ListItemText primary="Manage pizzas" />
-          {isPizzaListItemOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={isPizzaListItemOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Add new pizza" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Amend pizzas" />
-            </ListItemButton>
-          </List>
-        </Collapse>
-
-        <ListItemButton onClick={onSoftDrinkListItemClick}>
-          <ListItemText primary="Manage soft drinks" />
-          {isSoftDrinkListItemOpen ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={isSoftDrinkListItemOpen} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Add new soft drink" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Amend soft drinks" />
-            </ListItemButton>
-          </List>
-        </Collapse> */}
       </List>
     </Drawer>
   );
