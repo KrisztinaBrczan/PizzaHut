@@ -5,10 +5,13 @@ import { createTheme } from '@mui/material';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#4caf50',
+      //main: '#4caf50',
+      main: '#c62828',
     },
     secondary: {
-      main: '#f44336',
+      // main: '#f44336', //red
+      //main: '#fff', //white
+      main: '#E8807D', //pinkish
     },
     background: {
       paper: '#fafafa',
@@ -17,13 +20,11 @@ const theme = createTheme({
     error: {
       main: '#d50000',
     },
-    text: {
-      primary: '#212121',
-      secondary: '#757575',
-    },
+
     success: {
       main: '#388e3c',
     },
+
     warning: {
       main: '#ff9800',
     },
