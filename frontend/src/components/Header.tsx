@@ -4,6 +4,7 @@ import { AppBar, Box, IconButton, Menu, MenuItem, Tab, Tabs, Toolbar, Tooltip, u
 import { MouseEvent, SyntheticEvent, useState } from 'react';
 import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
+import { MenuItemType } from '@/Types';
 
 export default function Header() {
   const [value, setValue] = useState(1);
@@ -25,9 +26,23 @@ export default function Header() {
   function onMobileMenuClose() {
     setMobileMenuOpen(false);
     setAnchorEl(null);
-
     //routing
   }
+
+  const menuItems: MenuItemType[] = [
+    {
+      value: 'pizzas',
+      menuItemText: 'Pizzas',
+    },
+    {
+      value: 'softDrinks',
+      menuItemText: 'Soft drinks',
+    },
+    {
+      value: 'customPizza',
+      menuItemText: 'Custom Pizza',
+    },
+  ];
 
   return (
     <>
@@ -55,7 +70,21 @@ export default function Header() {
         </Box>
 
         <Toolbar sx={{ position: 'relative', justifyContent: isMobileScreen ? 'flex-end' : 'center' }}>
-          {!isMobileScreen ? (
+          {isMobileScreen ? (
+            <Box>
+              <IconButton onClick={onMobileMenuClick}>
+                <MenuTwoToneIcon sx={{ fontSize: 40, color: 'secondary.main' }} />
+              </IconButton>
+
+              <Menu id="basic-menu" anchorEl={anchorEl} open={mobileMenuOpen} onClose={onMobileMenuClose}>
+                {menuItems.map(({ value, menuItemText }) => (
+                  <MenuItem value={value} onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
+                    {menuItemText}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          ) : (
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Tabs
                 value={value}
@@ -64,28 +93,10 @@ export default function Header() {
                 indicatorColor="secondary"
                 aria-label="secondary tabs example"
               >
-                <Tab value={'pizzas'} sx={{ fontWeight: 'bold' }} label="Pizzas" />
-                <Tab value={'softDrinks'} sx={{ fontWeight: 'bold' }} label="Soft drinks" />
-                <Tab value={'customPizza'} sx={{ fontWeight: 'bold' }} label="Custom pizza" />
+                {menuItems.map(({ value, menuItemText }) => (
+                  <Tab value={value} label={menuItemText} sx={{ fontWeight: 'bold' }} />
+                ))}
               </Tabs>
-            </Box>
-          ) : (
-            <Box>
-              <IconButton onClick={onMobileMenuClick}>
-                <MenuTwoToneIcon sx={{ fontSize: 40, color: 'secondary.main' }} />
-              </IconButton>
-
-              <Menu id="basic-menu" anchorEl={anchorEl} open={mobileMenuOpen} onClose={onMobileMenuClose}>
-                <MenuItem value="pizzas" onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
-                  Pizzas
-                </MenuItem>
-                <MenuItem value="softDrinks" onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
-                  Soft drinks
-                </MenuItem>
-                <MenuItem value="customPizza" onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
-                  Custom pizza
-                </MenuItem>
-              </Menu>
             </Box>
           )}
         </Toolbar>
