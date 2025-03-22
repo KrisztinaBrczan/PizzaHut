@@ -5,6 +5,7 @@ import '../firebase/init';
 import { ThemeProvider } from '@mui/material';
 import theme from '@/style/theme';
 import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProvider theme={theme}>
           <Header />
-
+          <Sidebar />
           {children}
         </ThemeProvider>
       </body>

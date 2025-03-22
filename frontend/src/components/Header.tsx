@@ -5,6 +5,7 @@ import { MouseEvent, SyntheticEvent, useState } from 'react';
 import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { MenuItemType } from '@/Types';
+import { useSidebarStore } from '@/app/store/useSidebarStore';
 
 const menuItems: MenuItemType[] = [
   {
@@ -26,6 +27,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
+
+  const { toggelDrawer } = useSidebarStore();
 
   const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -63,7 +66,7 @@ export default function Header() {
           }}
         >
           <Tooltip title="Admin" placement="left" arrow>
-            <IconButton sx={{ cursor: 'pointer', zIndex: 2 }}>
+            <IconButton onClick={toggelDrawer} sx={{ cursor: 'pointer', zIndex: 2 }}>
               <LocalPizzaTwoToneIcon sx={{ fontSize: !isMobileScreen ? 80 : 60, rotate: '-20deg', color: 'secondary.main' }} />
             </IconButton>
           </Tooltip>
