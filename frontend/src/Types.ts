@@ -5,7 +5,7 @@ export interface MenuItemType {
 
 export interface adminMenuItemListType {
   menuTitle: string;
-  subtitles: string[];
-  onItemClick: () => void;
-  currentState: boolean;
+  subtitles?: string[];
+  onItemClick?: () => void;
+  currentState?: boolean;
 }
