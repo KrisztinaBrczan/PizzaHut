@@ -1,6 +1,6 @@
 'use client';
 
-import { AppBar, Box, IconButton, Tab, Tabs, Toolbar } from '@mui/material';
+import { AppBar, Box, IconButton, Tab, Tabs, Toolbar, Tooltip } from '@mui/material';
 import { SyntheticEvent, useState } from 'react';
 import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 
@@ -29,9 +29,11 @@ export default function Header() {
             cursor: 'pointer',
           }}
         >
-          <IconButton sx={{ cursor: 'pointer', zIndex: 2 }}>
-            <LocalPizzaTwoToneIcon sx={{ fontSize: 80, rotate: '-20deg', color: 'secondary.main' }} />
-          </IconButton>
+          <Tooltip title="Admin" placement="left" arrow>
+            <IconButton sx={{ cursor: 'pointer', zIndex: 2 }}>
+              <LocalPizzaTwoToneIcon sx={{ fontSize: 80, rotate: '-20deg', color: 'secondary.main' }} />
+            </IconButton>
+          </Tooltip>
         </Box>
 
         <Toolbar sx={{ position: 'relative', justifyContent: 'center' }}>
