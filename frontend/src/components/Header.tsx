@@ -7,7 +7,7 @@ import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { MenuItemType } from '@/Types';
 
 export default function Header() {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState('pizzas');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
