@@ -77,8 +77,13 @@ export default function Header() {
               </IconButton>
 
               <Menu id="basic-menu" anchorEl={anchorEl} open={isMobileMenuOpen} onClose={onMobileMenuClose}>
-                {menuItems.map(({ value, menuItemText }) => (
-                  <MenuItem value={value} onClick={onMobileMenuClose} sx={{ '&:hover': { color: 'primary.main' } }}>
+                {menuItems.map(({ value, menuItemText }, index) => (
+                  <MenuItem
+                    key={`${value}_${index}`}
+                    value={value}
+                    onClick={onMobileMenuClose}
+                    sx={{ '&:hover': { color: 'primary.main' } }}
+                  >
                     {menuItemText}
                   </MenuItem>
                 ))}
@@ -93,8 +98,8 @@ export default function Header() {
                 indicatorColor="secondary"
                 aria-label="secondary tabs example"
               >
-                {menuItems.map(({ value, menuItemText }) => (
-                  <Tab value={value} label={menuItemText} sx={{ fontWeight: 'bold' }} />
+                {menuItems.map(({ value, menuItemText }, index) => (
+                  <Tab key={`${value}_${index}`} value={value} label={menuItemText} sx={{ fontWeight: 'bold' }} />
                 ))}
               </Tabs>
             </Box>
