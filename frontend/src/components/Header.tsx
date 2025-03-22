@@ -6,6 +6,21 @@ import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { MenuItemType } from '@/Types';
 
+const menuItems: MenuItemType[] = [
+  {
+    value: 'pizzas',
+    menuItemText: 'Pizzas',
+  },
+  {
+    value: 'softDrinks',
+    menuItemText: 'Soft drinks',
+  },
+  {
+    value: 'customPizza',
+    menuItemText: 'Custom Pizza',
+  },
+];
+
 export default function Header() {
   const [value, setValue] = useState('pizzas');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,21 +43,6 @@ export default function Header() {
     setAnchorEl(null);
     //routing
   }
-
-  const menuItems: MenuItemType[] = [
-    {
-      value: 'pizzas',
-      menuItemText: 'Pizzas',
-    },
-    {
-      value: 'softDrinks',
-      menuItemText: 'Soft drinks',
-    },
-    {
-      value: 'customPizza',
-      menuItemText: 'Custom Pizza',
-    },
-  ];
 
   return (
     <>
