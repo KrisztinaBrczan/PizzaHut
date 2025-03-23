@@ -6,6 +6,7 @@ import { ThemeProvider } from '@mui/material';
 import theme from '@/style/theme';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
+import MainContainer from '@/components/MainContainer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,7 +34,7 @@ export default function RootLayout({
         <ThemeProvider theme={theme}>
           <Header />
           <Sidebar />
-          {children}
+          <MainContainer>{children}</MainContainer>
         </ThemeProvider>
       </body>
     </html>

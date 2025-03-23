@@ -6,18 +6,22 @@ import LocalPizzaTwoToneIcon from '@mui/icons-material/LocalPizzaTwoTone';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { MenuItemType } from '@/Types';
 import { useSidebarStore } from '@/app/store/useSidebarStore';
+import { useRouter } from 'next/navigation';
 
 const menuItems: MenuItemType[] = [
   {
     value: 'pizzas',
+    path: '/',
     menuItemText: 'Pizzas',
   },
   {
     value: 'softDrinks',
+    path: '/softDrinks',
     menuItemText: 'Soft drinks',
   },
   {
     value: 'customPizza',
+    path: '/customPizza',
     menuItemText: 'Custom Pizza',
   },
 ];
@@ -27,6 +31,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
+  const router = useRouter();
 
   const { toggleDrawer } = useSidebarStore();
 
@@ -80,11 +85,11 @@ export default function Header() {
               </IconButton>
 
               <Menu id="basic-menu" anchorEl={anchorEl} open={isMobileMenuOpen} onClose={onMobileMenuClose}>
-                {menuItems.map(({ value, menuItemText }, index) => (
+                {menuItems.map(({ value, menuItemText, path }, index) => (
                   <MenuItem
                     key={`${value}_${index}`}
                     value={value}
-                    onClick={onMobileMenuClose}
+                    onClick={() => router.push(path)}
                     sx={{ '&:hover': { color: 'primary.main' } }}
                   >
                     {menuItemText}
@@ -101,8 +106,14 @@ export default function Header() {
                 indicatorColor="secondary"
                 aria-label="secondary tabs example"
               >
-                {menuItems.map(({ value, menuItemText }, index) => (
-                  <Tab key={`${value}_${index}`} value={value} label={menuItemText} sx={{ fontWeight: 'bold' }} />
+                {menuItems.map(({ value, menuItemText, path }, index) => (
+                  <Tab
+                    key={`${value}_${index}`}
+                    value={value}
+                    label={menuItemText}
+                    sx={{ fontWeight: 'bold' }}
+                    onClick={() => router.push(path)}
+                  />
                 ))}
               </Tabs>
             </Box>

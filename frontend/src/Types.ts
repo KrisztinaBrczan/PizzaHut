@@ -1,5 +1,6 @@
 export interface MenuItemType {
   value: string;
+  path: string;
   menuItemText: string;
 }
 
