@@ -1,29 +1,21 @@
 'use client';
 
 import { useSidebarStore } from '@/app/store/useSidebarStore';
-import { Box, Collapse, Drawer, List, ListItemButton, ListItemText } from '@mui/material';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import { useState } from 'react';
+import { Drawer, List, ListItemButton, ListItemText } from '@mui/material';
+
 import { AdminMenuItemListType } from '@/Types';
+import CollapsibleListItems from './CollapsibleListItems ';
 
 export default function Sidebar() {
-  const [isPizzaListItemOpen, setIsPizzaListItemOpen] = useState(false);
-  const [isSoftDrinkListItemOpen, setSoftDrinkIsListItemOpen] = useState(false);
-
   const adminMenuItemList: AdminMenuItemListType[] = [
     { menuTitle: 'Orders' },
     {
       menuTitle: 'Manage pizzas',
       subtitles: ['Add new pizza', 'Amend pizzas'],
-      onItemClick: () => setIsPizzaListItemOpen(!isPizzaListItemOpen),
-      currentState: isPizzaListItemOpen,
     },
     {
       menuTitle: 'Manage soft drinks',
       subtitles: ['Add new soft drink', 'Amend soft drinks'],
-      onItemClick: () => setSoftDrinkIsListItemOpen(!isSoftDrinkListItemOpen),
-      currentState: isSoftDrinkListItemOpen,
     },
   ];
 
@@ -37,25 +29,7 @@ export default function Sidebar() {
               <ListItemText primary={list.menuTitle} />
             </ListItemButton>
           ) : (
-            <Box key={list.menuTitle}>
-              <ListItemButton onClick={list.onItemClick} sx={{ '&:hover': { color: 'primary.main' } }}>
-                <ListItemText primary={list.menuTitle} />
-                {list.currentState ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-
-              <Collapse in={list.currentState} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  {list.subtitles &&
-                    list.subtitles.map((subtitle, index) => (
-                      <Box key={`${subtitle}_${index}`}>
-                        <ListItemButton sx={{ pl: 4, '&:hover': { color: 'primary.main' } }}>
-                          <ListItemText primary={subtitle} />
-                        </ListItemButton>
-                      </Box>
-                    ))}
-                </List>
-              </Collapse>
-            </Box>
+            <CollapsibleListItems list={list} />
           ),
         )}
       </List>

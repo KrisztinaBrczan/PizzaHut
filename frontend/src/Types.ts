@@ -6,6 +6,4 @@ export interface MenuItemType {
 export interface AdminMenuItemListType {
   menuTitle: string;
   subtitles?: string[];
-  onItemClick?: () => void;
-  currentState?: boolean;
 }
