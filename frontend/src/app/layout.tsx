@@ -7,6 +7,7 @@ import theme from '@/style/theme';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
 import MainContainer from '@/components/MainContainer';
+import TanstackProvider from '@/providers/TanstackProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,11 +32,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider theme={theme}>
-          <Header />
-          <Sidebar />
-          <MainContainer>{children}</MainContainer>
-        </ThemeProvider>
+        <TanstackProvider>
+          <ThemeProvider theme={theme}>
+            <Header />
+            <Sidebar />
+            <MainContainer>{children}</MainContainer>
+          </ThemeProvider>
+        </TanstackProvider>
       </body>
     </html>
   );
