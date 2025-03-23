@@ -1,5 +1,5 @@
 import { Pizzas } from '@/Types';
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid2, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 
 interface PizzaCardProps {
   currentPizza: Pizzas;
@@ -8,7 +8,7 @@ interface PizzaCardProps {
 export default function PizzaCard({ currentPizza }: PizzaCardProps) {
   return (
     <Card sx={{ width: '250px' }}>
-      <CardMedia sx={{ height: 140, backgroundImage: '' }} image={currentPizza.photo_url} title={currentPizza.name} />
+      <CardMedia component="img" sx={{ height: 140, objectFit: 'fit' }} image={currentPizza.photo_url} title={currentPizza.name} />
       <CardContent>
         <Typography align="center" sx={{ fontWeight: 'bold' }}>
           {currentPizza.price} HUF
@@ -17,8 +17,15 @@ export default function PizzaCard({ currentPizza }: PizzaCardProps) {
           {currentPizza.name}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button variant="contained" size="small" sx={{ borderRadius: '25px' }}>
+      <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
+        <Button
+          variant="contained"
+          size="small"
+          sx={{
+            borderRadius: '25px',
+            px: 4,
+          }}
+        >
           Add
         </Button>
       </CardActions>

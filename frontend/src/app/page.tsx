@@ -18,9 +18,17 @@ export default function Home() {
       <Typography variant="h5" align="center" sx={{ fontWeight: 'bold' }}>
         Our Pizzas
       </Typography>
-      <Grid2 container spacing={4}>
+      <Grid2
+        container
+        spacing={4}
+        justifyContent="center"
+        sx={{
+          flexDirection: { xs: 'column', sm: 'row' },
+          marginTop: '35px',
+        }}
+      >
         {pizzas?.map((currentPizza) => (
-          <Grid2 key={currentPizza.id}>
+          <Grid2 key={currentPizza.id} container justifyContent="center">
             <PizzaCard currentPizza={currentPizza} />
           </Grid2>
         ))}
