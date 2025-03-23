@@ -10,7 +10,7 @@ export interface AdminMenuItemListType {
 }
 
 export interface Pizzas {
-  id: string;
+  id?: string;
   name: string;
   base_sauce: string;
   diet: string[];
