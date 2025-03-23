@@ -5,13 +5,13 @@ import { Box, Collapse, Drawer, List, ListItemButton, ListItemText } from '@mui/
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
-import { adminMenuItemListType } from '@/Types';
+import { AdminMenuItemListType } from '@/Types';
 
 export default function Sidebar() {
   const [isPizzaListItemOpen, setIsPizzaListItemOpen] = useState(false);
   const [isSoftDrinkListItemOpen, setSoftDrinkIsListItemOpen] = useState(false);
 
-  const adminMenuItemList: adminMenuItemListType[] = [
+  const adminMenuItemList: AdminMenuItemListType[] = [
     { menuTitle: 'Orders' },
     {
       menuTitle: 'Manage pizzas',

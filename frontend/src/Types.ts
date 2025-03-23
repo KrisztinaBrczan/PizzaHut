@@ -3,7 +3,7 @@ export interface MenuItemType {
   menuItemText: string;
 }
 
-export interface adminMenuItemListType {
+export interface AdminMenuItemListType {
   menuTitle: string;
   subtitles?: string[];
   onItemClick?: () => void;
