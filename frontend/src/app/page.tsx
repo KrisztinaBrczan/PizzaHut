@@ -1,5 +1,3 @@
-import Header from '@/components/Header';
-
 export default function Home() {
-  return <></>;
+  return <div style={{ marginTop: '50px' }}>main page</div>;
 }
