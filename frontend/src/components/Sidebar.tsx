@@ -19,9 +19,10 @@ const adminMenuItemLists: AdminMenuItemListType[] = [
 ];
 
 export default function Sidebar() {
-  const { isDrawerOpen, toggleDrawer } = useSidebarStore();
+  const { isDrawerOpen, reset } = useSidebarStore();
+
   return (
-    <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer} sx={{ zIndex: -1 }}>
+    <Drawer anchor="left" open={isDrawerOpen} onClose={reset} sx={{ zIndex: -1 }}>
       <List sx={{ marginTop: '60%', width: 200 }}>
         {adminMenuItemLists.map((list) =>
           list.subtitles ? (
