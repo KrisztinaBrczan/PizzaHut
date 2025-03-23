@@ -8,3 +8,14 @@ export interface AdminMenuItemListType {
   menuTitle: string;
   subtitles?: string[];
 }
+
+export interface Pizzas {
+  id: string;
+  name: string;
+  base_sauce: string;
+  diet: string[];
+  toppings: string[];
+  size: number;
+  photo_url: string;
+  price: number;
+}
