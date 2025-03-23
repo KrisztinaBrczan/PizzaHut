@@ -49,12 +49,11 @@ export default function Header() {
   function onMobileMenuClose() {
     setIsMobileMenuOpen(false);
     setAnchorEl(null);
-    //routing
   }
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="relative" sx={{ top: 0, zIndex: theme.zIndex.drawer + 1 }}>
         <Box
           sx={{
             position: 'absolute',
@@ -68,10 +67,11 @@ export default function Header() {
             alignItems: 'center',
             bgcolor: 'primary.main',
             cursor: 'pointer',
+            zIndex: theme.zIndex.drawer + 2,
           }}
         >
           <Tooltip title="Admin" placement="left" arrow>
-            <IconButton onClick={toggleDrawer} sx={{ cursor: 'pointer', zIndex: 2 }}>
+            <IconButton onClick={toggleDrawer} sx={{ cursor: 'pointer' }}>
               <LocalPizzaTwoToneIcon sx={{ fontSize: !isMobileScreen ? 80 : 60, rotate: '-20deg', color: 'secondary.main' }} />
             </IconButton>
           </Tooltip>
