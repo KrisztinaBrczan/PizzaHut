@@ -51,10 +51,6 @@ export default function Header() {
     setAnchorEl(null);
   }
 
-  console.log('appbar z index', theme.zIndex.appBar);
-  console.log('drawer z index', theme.zIndex.drawer);
-  console.log('appbar 1-al nagyobb zindex mint drawer', theme.zIndex.drawer + 1);
-
   return (
     <>
       <AppBar position="relative" sx={{ top: 0, zIndex: theme.zIndex.drawer + 1 }}>
