@@ -40,12 +40,7 @@ export default function PizzaCard({ currentPizza }: PizzaCardProps) {
         </Grid2>
 
         <Grid2 container gap="3px" sx={{ marginTop: '20px' }}>
-          {currentPizza.toppings.map((topping, index) => (
-            <Typography variant="body2" key={topping}>
-              {topping}
-              {index < currentPizza.toppings.length - 1 ? ', ' : ''}
-            </Typography>
-          ))}
+          <Typography variant="body2">{currentPizza.toppings.join(', ')}</Typography>
         </Grid2>
       </CardContent>
       <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
