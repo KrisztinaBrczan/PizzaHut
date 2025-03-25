@@ -7,7 +7,12 @@ import { Box, CircularProgress, Grid2, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
 export default function Home() {
-  const { data: pizzas, isLoading } = useQuery<Pizza[]>({
+  const {
+    data: pizzas,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<Pizza[]>({
     queryFn: async () => await getAllPizzas(),
 
     queryKey: ['pizzas'],
@@ -21,9 +26,13 @@ export default function Home() {
     );
   }
 
+  if (isError) {
+    return <Typography>An error occured: {error.message}</Typography>;
+  }
+
   return (
     <>
-      {pizzas && (
+      {pizzas && !isError && (
         <Box>
           <Typography variant="h5" align="center" sx={{ fontWeight: 'bold' }}>
             Our Pizzas
