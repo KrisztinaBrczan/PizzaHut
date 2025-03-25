@@ -8,8 +8,6 @@ interface PizzaCardProps {
 }
 
 export default function PizzaCard({ currentPizza }: PizzaCardProps) {
-  console.log('currentpizza', currentPizza);
-
   return (
     <Card sx={{ width: '250px' }}>
       <CardMedia component="img" sx={{ height: 140, objectFit: 'fit' }} image={currentPizza.photo_url} title={currentPizza.name} />

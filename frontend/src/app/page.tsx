@@ -2,12 +2,12 @@
 
 import PizzaCard from '@/components/PizzaCard';
 import getAllPizzas from '@/services/getAllPizzas';
-import { Pizzas } from '@/Types';
+import { Pizza } from '@/Types';
 import { Box, CircularProgress, Grid2, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
 export default function Home() {
-  const { data: pizzas, isLoading } = useQuery<Pizzas[]>({
+  const { data: pizzas, isLoading } = useQuery<Pizza[]>({
     queryFn: async () => await getAllPizzas(),
 
     queryKey: ['pizzas'],
@@ -15,7 +15,7 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="50vh">
+      <Box display="flex" justifyContent="center" alignItems="center" height="500px">
         <CircularProgress />
       </Box>
     );
