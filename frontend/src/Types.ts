@@ -9,7 +9,7 @@ export interface AdminMenuItemListType {
   subtitles?: string[];
 }
 
-export interface Pizzas {
+export interface Pizza {
   id?: string;
   name: string;
   base_sauce: string;

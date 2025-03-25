@@ -1,10 +1,10 @@
 'use client';
 
-import { Pizzas } from '@/Types';
+import { Pizza } from '@/Types';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid2, Typography } from '@mui/material';
 
 interface PizzaCardProps {
-  currentPizza: Pizzas;
+  currentPizza: Pizza;
 }
 
 export default function PizzaCard({ currentPizza }: PizzaCardProps) {
