@@ -1,10 +1,10 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/init';
-import { Pizza } from '@/Types';
+import { Pizza, PizzaDocument } from '@/Types';
 
-export default async function getAllPizzas(): Promise<Pizza[]> {
+export default async function getAllPizzas(): Promise<PizzaDocument[]> {
   const querySnapshot = await getDocs(collection(db, 'pizzas'));
-  const pizzas: Pizza[] = [];
+  const pizzas: PizzaDocument[] = [];
   querySnapshot.forEach((doc) => {
     pizzas.push({
       id: doc.id,

@@ -2,7 +2,7 @@
 
 import PizzaCard from '@/components/PizzaCard';
 import getAllPizzas from '@/services/getAllPizzas';
-import { Pizza } from '@/Types';
+import { PizzaDocument } from '@/Types';
 import { Box, CircularProgress, Grid2, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
@@ -12,7 +12,7 @@ export default function Home() {
     isLoading,
     isError,
     error,
-  } = useQuery<Pizza[]>({
+  } = useQuery<PizzaDocument[]>({
     queryFn: async () => await getAllPizzas(),
 
     queryKey: ['pizzas'],
