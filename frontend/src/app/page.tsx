@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <>
-      {pizzas && !isError && (
+      {pizzas && (
         <Box>
           <Typography variant="h5" align="center" sx={{ fontWeight: 'bold' }}>
             Our Pizzas

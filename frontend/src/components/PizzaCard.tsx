@@ -21,7 +21,7 @@ export default function PizzaCard({ currentPizza }: PizzaCardProps) {
 
         <Stack direction="row" spacing={1} sx={{ marginTop: '16px', justifyContent: 'center' }}>
           {currentPizza.diet.map((diet) => (
-            <Chip label={diet} variant="outlined" color="secondary" size="small" />
+            <Chip key={diet} label={diet} variant="outlined" color="secondary" size="small" />
           ))}
         </Stack>
 
