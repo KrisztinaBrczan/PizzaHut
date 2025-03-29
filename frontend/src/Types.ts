@@ -22,3 +22,14 @@ export interface Pizza {
 export interface PizzaDocument extends Pizza {
   id: string;
 }
+
+export interface Drink {
+  name: string;
+  photo_url: string;
+  price: number;
+  size: number;
+}
+
+export interface DrinkDocument extends Drink {
+  id: string;
+}
