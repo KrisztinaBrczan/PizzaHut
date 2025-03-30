@@ -8,6 +8,8 @@ import { FormInputType } from '@/Types';
 import FieldArrays from '@/components/FieldArrays';
 import RadioButtons from '@/components/RadioButtons';
 import FormInput from '@/components/FormInput';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const inputFields: FormInputType[] = [
   { label: 'Name', inputName: 'name', placeholderText: "pizza's name" },
@@ -17,17 +19,39 @@ const inputFields: FormInputType[] = [
 
 const pizzaSizeFields: number[] = [28, 32, 52];
 
+const schema = z.object({
+  name: z.string().transform((value) => value.toLowerCase().charAt(0).toUpperCase() + value.slice(1).toLowerCase()),
+  photo_url: z.string(),
+  price: z.string().transform((value: string) => Number(value)),
+  size: z.string().transform((value: string) => Number(value)),
+  diet: z.array(
+    z
+      .string()
+      .min(1, 'Provide a diet')
+      .transform((value) => value.toLowerCase().charAt(0).toUpperCase() + value.slice(1).toLowerCase()),
+  ),
+  toppings: z.array(
+    z
+      .string()
+      .min(1, 'Provide a topping')
+      .transform((value) => value.toLowerCase().charAt(0).toUpperCase() + value.slice(1).toLowerCase()),
+  ),
+});
+
+type PizzaFormType = z.infer<typeof schema>;
+
 export default function Page() {
-  const methods = useForm({
+  const methods = useForm<PizzaFormType>({
     defaultValues: {
       name: '',
       photo_url: '',
-      price: '',
-      size: '28',
+      price: 0,
+      size: 28,
       diet: [],
       toppings: [],
     },
     mode: 'all',
+    resolver: zodResolver(schema),
   });
 
   const {
@@ -48,7 +72,7 @@ export default function Page() {
     name: 'toppings',
   });
 
-  function onSubmit(data) {
+  function onSubmit(data: PizzaFormType) {
     console.log(data);
   }
 
