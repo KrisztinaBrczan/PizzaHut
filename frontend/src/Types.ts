@@ -39,3 +39,9 @@ export interface Drink {
 export interface DrinkDocument extends Drink {
   id: string;
 }
+
+export interface FormInputType {
+  label: string;
+  inputName: string;
+  placeholderText: string;
+}
