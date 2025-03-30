@@ -11,7 +11,7 @@ export interface SubtitleItems {
 
 export interface AdminMenuItemListType {
   menuTitle: string;
-  path?: string;
+  path: string;
   subtitles?: SubtitleItems[];
 }
 

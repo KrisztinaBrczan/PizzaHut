@@ -5,6 +5,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { AdminMenuItemListType } from '@/Types';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface CollapsibleListItemsProps {
   list: AdminMenuItemListType;
@@ -12,9 +13,14 @@ interface CollapsibleListItemsProps {
 
 export default function CollapsibleListItems({ list }: CollapsibleListItemsProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   function onToggleOpen() {
     setIsOpen((prevIsOpen) => !prevIsOpen);
+  }
+
+  function handleOnMenuItemClick(path: string) {
+    router.push(path);
   }
 
   return (
@@ -28,7 +34,7 @@ export default function CollapsibleListItems({ list }: CollapsibleListItemsProps
         <List component="div" disablePadding>
           {list.subtitles?.map((subtitle, index) => (
             <Box key={`${subtitle.title}_${index}`}>
-              <ListItemButton sx={{ pl: 4, '&:hover': { color: 'primary.main' } }}>
+              <ListItemButton sx={{ pl: 4, '&:hover': { color: 'primary.main' } }} onClick={() => handleOnMenuItemClick(subtitle.path)}>
                 <ListItemText primary={subtitle.title} />
               </ListItemButton>
             </Box>
