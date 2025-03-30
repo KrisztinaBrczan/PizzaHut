@@ -27,9 +27,9 @@ export default function CollapsibleListItems({ list }: CollapsibleListItemsProps
       <Collapse in={isOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {list.subtitles?.map((subtitle, index) => (
-            <Box key={`${subtitle}_${index}`}>
+            <Box key={`${subtitle.title}_${index}`}>
               <ListItemButton sx={{ pl: 4, '&:hover': { color: 'primary.main' } }}>
-                <ListItemText primary={subtitle} />
+                <ListItemText primary={subtitle.title} />
               </ListItemButton>
             </Box>
           ))}

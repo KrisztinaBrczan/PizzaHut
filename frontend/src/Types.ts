@@ -4,9 +4,15 @@ export interface MenuItemType {
   menuItemText: string;
 }
 
+export interface SubtitleItems {
+  path: string;
+  title: string;
+}
+
 export interface AdminMenuItemListType {
   menuTitle: string;
-  subtitles?: string[];
+  path?: string;
+  subtitles?: SubtitleItems[];
 }
 
 export interface Pizza {

@@ -7,14 +7,20 @@ import { AdminMenuItemListType } from '@/Types';
 import CollapsibleListItems from './CollapsibleListItems';
 
 const adminMenuItemLists: AdminMenuItemListType[] = [
-  { menuTitle: 'Orders' },
+  { menuTitle: 'Orders', path: 'orders' },
   {
     menuTitle: 'Manage pizzas',
-    subtitles: ['Add new pizza', 'Amend pizzas'],
+    subtitles: [
+      { title: 'Add new pizza', path: 'addPizza' },
+      { title: 'Amend pizzas', path: 'amendPizzas' },
+    ],
   },
   {
     menuTitle: 'Manage soft drinks',
-    subtitles: ['Add new soft drink', 'Amend soft drinks'],
+    subtitles: [
+      { title: 'Add new soft drink', path: 'addDrink' },
+      { title: 'Amend soft drinks', path: 'amendDrinks' },
+    ],
   },
 ];
 
