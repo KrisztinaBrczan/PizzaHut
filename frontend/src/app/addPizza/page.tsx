@@ -1,24 +1,13 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-} from '@mui/material';
-import { Controller, FormProvider, useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { Box, Button, IconButton, FormLabel, Grid2, Typography } from '@mui/material';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import { Controller, FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { FormInputType } from '@/Types';
-import FormInput from '@/components/FormInput';
+import FieldArrays from '@/components/FieldArrays';
 import RadioButtons from '@/components/RadioButtons';
+import FormInput from '@/components/FormInput';
 
 const inputFields: FormInputType[] = [
   { label: 'Name', inputName: 'name', placeholderText: "pizza's name" },
@@ -28,7 +17,7 @@ const inputFields: FormInputType[] = [
 
 const pizzaSizeFields: number[] = [28, 32, 52];
 
-export default function page() {
+export default function Page() {
   const methods = useForm({
     defaultValues: {
       name: '',
@@ -39,6 +28,24 @@ export default function page() {
       toppings: [],
     },
     mode: 'all',
+  });
+
+  const {
+    fields: dietFields,
+    append: appendDiet,
+    remove: removeDiet,
+  } = useFieldArray({
+    control: methods.control,
+    name: 'diet',
+  });
+
+  const {
+    fields: toppingFields,
+    append: appendTopping,
+    remove: removeTopping,
+  } = useFieldArray({
+    control: methods.control,
+    name: 'toppings',
   });
 
   function onSubmit(data) {
@@ -52,6 +59,7 @@ export default function page() {
           <Typography variant="h5" align="center" sx={{ fontWeight: 'bold' }}>
             Add New Pizza
           </Typography>
+
           {inputFields.map((inputField) => (
             <FormInput key={inputField.inputName} input={inputField} />
           ))}
@@ -60,7 +68,40 @@ export default function page() {
           {pizzaSizeFields.map((pizzaSize) => (
             <RadioButtons key={pizzaSize} pizzaSize={pizzaSize} name="size" />
           ))}
-          <Button variant="contained" type="submit">
+
+          <Grid2 container alignItems="center" sx={{ mt: 2 }}>
+            <FormLabel id="pizza-diet">Add diet:</FormLabel>
+            <IconButton onClick={() => appendDiet('')}>
+              <AddCircleIcon sx={{ color: 'primary.main' }} />
+            </IconButton>
+          </Grid2>
+
+          {dietFields.map((currentItem, index) => (
+            <Box key={currentItem.id} sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
+              <FieldArrays name="diet" index={index} />
+              <IconButton onClick={() => removeDiet(index)} color="error">
+                <RemoveCircleOutlineIcon />
+              </IconButton>
+            </Box>
+          ))}
+
+          <Grid2 container alignItems="center" sx={{ mt: 2 }}>
+            <FormLabel id="pizza-toppings">Add toppings:</FormLabel>
+            <IconButton onClick={() => appendTopping('')}>
+              <AddCircleIcon sx={{ color: 'primary.main' }} />
+            </IconButton>
+          </Grid2>
+
+          {toppingFields.map((currentItem, index) => (
+            <Box key={currentItem.id} sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
+              <FieldArrays name="toppings" index={index} />
+              <IconButton onClick={() => removeTopping(index)} color="error">
+                <RemoveCircleOutlineIcon />
+              </IconButton>
+            </Box>
+          ))}
+
+          <Button variant="contained" type="submit" sx={{ mt: '50px' }}>
             Create Pizza
           </Button>
         </Box>
