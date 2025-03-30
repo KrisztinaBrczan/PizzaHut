@@ -2,14 +2,31 @@
 
 import getAllDrinks from '@/services/getAllDrinks';
 import { DrinkDocument } from '@/Types';
-import { Typography } from '@mui/material';
+import { Box, Typography, CircularProgress } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 
 export default function Page() {
-  const { data: drinks } = useQuery<DrinkDocument[]>({
+  const {
+    data: drinks,
+    isLoading,
+    isError,
+    error,
+  } = useQuery<DrinkDocument[]>({
     queryFn: async () => await getAllDrinks(),
     queryKey: ['drinks'],
   });
+
+  if (isLoading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="500px">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (isError) {
+    return <Typography>An error occured: {error.message}</Typography>;
+  }
 
   return (
     <>
