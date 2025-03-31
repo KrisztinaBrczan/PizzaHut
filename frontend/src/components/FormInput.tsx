@@ -23,6 +23,7 @@ export default function FormInput({ input }: FormInputProps) {
           <FormLabel>{label}:</FormLabel>
           <TextField
             {...field}
+            sx={{ mb: '10px' }}
             required
             size="small"
             placeholder={placeholderText}
