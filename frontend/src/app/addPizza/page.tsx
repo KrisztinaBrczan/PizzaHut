@@ -93,8 +93,17 @@ export default function Page() {
 
   function onSubmit(data: PizzaFormType) {
     console.log(data);
-    //convert to numbers
-    //convert to strings in an array (diet and toppings)
+
+    const dataToFirebase = {
+      name: data.name,
+      size: Number(data.size),
+      price: Number(data.price),
+      diets: data.diets.map((item) => item.value),
+      toppings: data.toppings.map((item) => item.value),
+      photo_url: data.photo_url,
+    };
+
+    console.log('dataToFirebase', dataToFirebase);
   }
 
   return (

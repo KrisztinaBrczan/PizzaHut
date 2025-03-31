@@ -21,7 +21,7 @@ export default function FieldArrays({ name, index }: FieldArraysProps) {
             size="small"
             placeholder={`${name} ${index + 1}`}
             error={!!formState.errors[name]}
-            helperText={"Don't leave it empty"}
+            helperText={formState.errors[name] ? "Don't leave it empty" : ''}
           />
         )}
       />
