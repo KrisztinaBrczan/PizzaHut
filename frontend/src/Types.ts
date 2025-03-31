@@ -4,9 +4,15 @@ export interface MenuItemType {
   menuItemText: string;
 }
 
+export interface SubtitleItems {
+  path: string;
+  title: string;
+}
+
 export interface AdminMenuItemListType {
   menuTitle: string;
-  subtitles?: string[];
+  path: string;
+  subtitles?: SubtitleItems[];
 }
 
 export interface Pizza {
@@ -32,4 +38,10 @@ export interface Drink {
 
 export interface DrinkDocument extends Drink {
   id: string;
+}
+
+export interface FormInputType {
+  label: string;
+  inputName: string;
+  placeholderText: string;
 }
